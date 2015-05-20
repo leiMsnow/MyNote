@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_top"
+        style="@style/DialogBottomTextStyle"
+        android:text="顶层" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#CCCCCC" />
+
+    <TextView
+        android:id="@+id/tv_center"
+        style="@style/DialogBottomTextStyle"
+        android:text="中间" />
+
+    <TextView
+        android:id="@+id/tv_bottom"
+        style="@style/DialogBottomTextStyle"
+        android:layout_marginTop="8dp"
+        android:text="底部" />
+
+</LinearLayout>

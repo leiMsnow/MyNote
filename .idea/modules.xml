@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NoteApplication.iml" filepath="$PROJECT_DIR$/NoteApplication.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/imageloader_async/imageloader_async.iml" filepath="$PROJECT_DIR$/imageloader_async/imageloader_async.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rayapi/rayapi.iml" filepath="$PROJECT_DIR$/rayapi/rayapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/voice/voice.iml" filepath="$PROJECT_DIR$/voice/voice.iml" />
     </modules>
   </component>
 </project>

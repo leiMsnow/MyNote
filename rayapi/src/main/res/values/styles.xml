@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="DialogBottomTextStyle">
+        <item name="android:minHeight">40dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/selector_dialog_text_change</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/pink_dialog</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="DialogAnimationStyle" parent="android:Animation">
+        <item name="@android:windowEnterAnimation">@anim/dialog_enter</item>
+        <item name="@android:windowExitAnimation">@anim/dialog_exit</item>
+    </style>
+</resources>

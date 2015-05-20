@@ -8,7 +8,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/imageloader_async" />
+            <option value="$PROJECT_DIR$/rayapi" />
+            <option value="$PROJECT_DIR$/voice" />
           </set>
         </option>
       </GradleProjectSettings>
