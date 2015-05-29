@@ -1,4 +1,4 @@
-package com.ray.api.view.pullrefresh;
+package com.ray.api.activity;
 
 import android.app.Activity;
 
