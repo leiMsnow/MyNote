@@ -5,4 +5,11 @@
         <attr name="rightPadding" format="dimension"></attr>
     </declare-styleable>
 
+    <declare-styleable name="ChangeColorView">
+        <attr name="changeIcon" format="reference" />
+        <attr name="changeColor" format="color" />
+        <attr name="changeText" format="string" />
+        <attr name="changeTextSize" format="dimension" />
+    </declare-styleable>
+
 </resources>
