@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ray.commonapi.R;
+import com.ray.api.R;
 
 /**
  * 这个类封装了下拉刷新的布局

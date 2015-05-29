@@ -1,80 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <?xml version="1.0" encoding="utf-8"?>
-    <resources>
-
-        <string name="app_name">commonapi</string>
-        <string name="settings">设置</string>
-        <string name="close">关闭</string>
-        <string name="prompt">提示</string>
-        <string name="confirm">确认</string>
-        <string name="cancel">取消</string>
-        <string name="copy">复制</string>
-        <string name="delete">删除</string>
-        <string name="send">发送</string>
-        <string name="pd_loading">加载中...</string>
-        <string name="check_connection">无可用网络连接，请检查网络设置！</string>
-        <string name="failed_connection">网络连接不可用，请检查网络设置</string>
-        <string name="text_digits">._@0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLIMNOPQRSTUVWXYZ</string>
-        <string name="album">相册</string>
-        <string name="camera">拍照</string>
-        <string name="send_shot">发送截屏</string>
-        <string name="make_record">拍摄视频</string>
-        <string name="video">视频库</string>
 
 
-        <string name="pushmsg_center_no_more_msg">没有更多数据了</string>
-        <string name="pushmsg_center_pull_up_text">松开加载更多</string>
-        <string name="pushmsg_center_pull_down_text">下拉可以刷新</string>
-        <string name="pushmsg_center_pull_release_text">松开获取更多</string>
-        <string name="pushmsg_center_pull_down_update_time">最后更新时间 : </string>
-        <string name="pushmsg_center_load_more_ongoing_text">正在加载中</string>
-        <string name="xsearch_loading">正在加载中…</string>
-        <!-- 加载图片失败时的提示文本 -->
-        <string name="picture_load_image_failed">点击屏幕，重新加载</string>
-        <!-- 加载中提示 -->
-        <string name="picture_image_loading">正在加载…</string>
+    <string name="app_name">commonapi</string>
+    <string name="settings">设置</string>
+    <string name="close">关闭</string>
+    <string name="prompt">提示</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
+    <string name="copy">复制</string>
+    <string name="delete">删除</string>
+    <string name="send">发送</string>
+    <string name="pd_loading">加载中...</string>
+    <string name="check_connection">无可用网络连接，请检查网络设置！</string>
+    <string name="failed_connection">网络连接不可用，请检查网络设置</string>
+    <string name="text_digits">._@0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLIMNOPQRSTUVWXYZ</string>
+    <string name="album">相册</string>
+    <string name="camera">拍照</string>
+    <string name="send_shot">发送截屏</string>
+    <string name="make_record">拍摄视频</string>
+    <string name="video">视频库</string>
 
-        <!-- 下拉刷新和上拉加载更多的文本 -->
-        <string name="pull_to_refresh_header_hint_normal">@string/pushmsg_center_pull_down_text</string>
-        <string name="pull_to_refresh_header_hint_normal2">上拉可以刷新</string>
-        <string name="pull_to_refresh_header_hint_ready">松开后刷新</string>
-        <string name="pull_to_refresh_header_hint_loading">@string/pushmsg_center_load_more_ongoing_text</string>
-        <string name="pull_to_refresh_header_last_time">@string/pushmsg_center_pull_down_update_time</string>
-        <string name="pull_to_refresh_footer_hint_ready">松开载入更多</string>
-        <string name="pull_to_refresh_refreshing_label">@string/pull_to_refresh_header_hint_loading</string>
-        <string name="pull_to_refresh_no_more_data">@string/pushmsg_center_no_more_msg</string>
-        <string name="pull_to_refresh_network_error">网络不给力，请检查网络</string>
 
-        <!-- 图片保存的文字 -->
-        <string name="picture_save_succeed">图片已保存到相册</string>
-        <string name="picture_save_fail">保存图片失败</string>
-        <string name="picture_next_album">下一组：</string>
-        <string name="picture_previous_album">上一组：</string>
-        <string name="cancel_editor">是否放弃此次编辑?</string>
+    <string name="pushmsg_center_no_more_msg">没有更多数据了</string>
+    <string name="pushmsg_center_pull_up_text">松开加载更多</string>
+    <string name="pushmsg_center_pull_down_text">下拉可以刷新</string>
+    <string name="pushmsg_center_pull_release_text">松开获取更多</string>
+    <string name="pushmsg_center_pull_down_update_time">最后更新时间 : </string>
+    <string name="pushmsg_center_load_more_ongoing_text">正在加载中</string>
+    <string name="xsearch_loading">正在加载中…</string>
+    <!-- 加载图片失败时的提示文本 -->
+    <string name="picture_load_image_failed">点击屏幕，重新加载</string>
+    <!-- 加载中提示 -->
+    <string name="picture_image_loading">正在加载…</string>
 
-        <!-- 月份 -->
-        <string name="january">1月</string>
-        <string name="february">2月</string>
-        <string name="march">3月</string>
-        <string name="april">4月</string>
-        <string name="may">5月</string>
-        <string name="june">6月</string>
-        <string name="july">7月</string>
-        <string name="aguest">8月</string>
-        <string name="september">9月</string>
-        <string name="october">10月</string>
-        <string name="november">11月</string>
-        <string name="december">12月</string>
-        <string name="today">今天</string>
-        <string name="day">日</string>
-        <string name="year">年</string>
-        <string name="yesterday">昨天</string>
-        <string name="morning">上午 %s</string>
-        <string name="noon">中午 %s</string>
-        <string name="afternoon">下午 %s</string>
-        <string name="evening">晚上 %s</string>
+    <!-- 下拉刷新和上拉加载更多的文本 -->
+    <string name="pull_to_refresh_header_hint_normal">@string/pushmsg_center_pull_down_text</string>
+    <string name="pull_to_refresh_header_hint_normal2">上拉可以刷新</string>
+    <string name="pull_to_refresh_header_hint_ready">松开后刷新</string>
+    <string name="pull_to_refresh_header_hint_loading">@string/pushmsg_center_load_more_ongoing_text</string>
+    <string name="pull_to_refresh_header_last_time">@string/pushmsg_center_pull_down_update_time</string>
+    <string name="pull_to_refresh_footer_hint_ready">松开载入更多</string>
+    <string name="pull_to_refresh_refreshing_label">@string/pull_to_refresh_header_hint_loading</string>
+    <string name="pull_to_refresh_no_more_data">@string/pushmsg_center_no_more_msg</string>
+    <string name="pull_to_refresh_network_error">网络不给力，请检查网络</string>
 
-    </resources>
+    <!-- 图片保存的文字 -->
+    <string name="picture_save_succeed">图片已保存到相册</string>
+    <string name="picture_save_fail">保存图片失败</string>
+    <string name="picture_next_album">下一组：</string>
+    <string name="picture_previous_album">上一组：</string>
+    <string name="cancel_editor">是否放弃此次编辑?</string>
+
+    <!-- 月份 -->
+    <string name="january">1月</string>
+    <string name="february">2月</string>
+    <string name="march">3月</string>
+    <string name="april">4月</string>
+    <string name="may">5月</string>
+    <string name="june">6月</string>
+    <string name="july">7月</string>
+    <string name="aguest">8月</string>
+    <string name="september">9月</string>
+    <string name="october">10月</string>
+    <string name="november">11月</string>
+    <string name="december">12月</string>
+    <string name="today">今天</string>
+    <string name="day">日</string>
+    <string name="year">年</string>
+    <string name="yesterday">昨天</string>
+    <string name="morning">上午 %s</string>
+    <string name="noon">中午 %s</string>
+    <string name="afternoon">下午 %s</string>
+    <string name="evening">晚上 %s</string>
 
 </resources>
+

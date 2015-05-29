@@ -1,7 +1,5 @@
 package com.ray.api.view.pullrefresh.ui;
 
-import com.ray.pullrefresh.ui.ILoadingLayout.State;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -13,6 +11,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
+import static com.ray.api.view.pullrefresh.ui.ILoadingLayout.State;
 
 /**
  * 这个实现了下拉刷新和上拉加载更多的功能
@@ -362,8 +362,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     public boolean isScrollLoadEnabled() {
         return mScrollLoadEnabled;
     }
-    
-    @Override
+
     public void setOnRefreshListener(OnRefreshListener<T> refreshListener) {
         mRefreshListener = refreshListener;
     }

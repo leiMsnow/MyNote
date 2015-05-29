@@ -49,7 +49,7 @@ public interface ILoadingLayout {
         /**
          * No more data
          */
-        NO_MORE_DATA,
+        NO_MORE_DATA, State,
     }
 
     /**

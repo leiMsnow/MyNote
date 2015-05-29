@@ -1,10 +1,7 @@
 package com.ray.api.view.pullrefresh.ui;
 
-import android.content.Context;
-import android.util.AttributeSet;
 import android.view.View;
 
-import com.ray.pullrefresh.ui.PullToRefreshBase.OnRefreshListener;
 
 /**
  * 定义了拉动刷新的接口
@@ -62,7 +59,7 @@ public interface IPullToRefresh<T extends View> {
      * 
      * @param refreshListener 监听器对象
      */
-    public void setOnRefreshListener(OnRefreshListener<T> refreshListener);
+    public void setOnRefreshListener(PullToRefreshBase.OnRefreshListener<T> refreshListener);
     
     /**
      * 结束下拉刷新

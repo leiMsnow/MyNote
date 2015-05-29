@@ -43,7 +43,7 @@ public class PullToRefreshWebView extends PullToRefreshBase<WebView> {
     }
 
     /**
-     * @see com.nj1s.lib.pullrefresh.PullToRefreshBase#createRefreshableView(android.content.Context, android.util.AttributeSet)
+     * @see PullToRefreshBase#createRefreshableView(android.content.Context, android.util.AttributeSet)
      */
     @Override
     protected WebView createRefreshableView(Context context, AttributeSet attrs) {
@@ -52,7 +52,7 @@ public class PullToRefreshWebView extends PullToRefreshBase<WebView> {
     }
 
     /**
-     * @see com.nj1s.lib.pullrefresh.PullToRefreshBase#isReadyForPullDown()
+     * @see PullToRefreshBase#isReadyForPullDown()
      */
     @Override
     protected boolean isReadyForPullDown() {
@@ -60,7 +60,7 @@ public class PullToRefreshWebView extends PullToRefreshBase<WebView> {
     }
 
     /**
-     * @see com.nj1s.lib.pullrefresh.PullToRefreshBase#isReadyForPullUp()
+     * @see PullToRefreshBase#isReadyForPullUp()
      */
     @Override
     protected boolean isReadyForPullUp() {

@@ -1,6 +1,6 @@
 package com.ray.api.view.pullrefresh.ui;
 
-import com.ray.pullrefresh.ui.ILoadingLayout.State;
+import com.ray.api.view.pullrefresh.ui.ILoadingLayout.State;
 
 import android.content.Context;
 import android.util.AttributeSet;

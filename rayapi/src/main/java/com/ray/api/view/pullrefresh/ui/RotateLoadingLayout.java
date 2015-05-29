@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 
-import com.ray.commonapi.R;
+import com.ray.api.R;
 
 /**
  * 这个类封装了下拉刷新的布局
@@ -73,7 +73,7 @@ public class RotateLoadingLayout extends LoadingLayout {
 		mArrowImageView = (ImageView) findViewById(R.id.pull_to_refresh_header_arrow);
 
 		mArrowImageView.setScaleType(ScaleType.CENTER);
-		mArrowImageView.setImageResource(R.drawable.xsearch_loading);
+		mArrowImageView.setImageResource(R.drawable.ic_loading);
 
 		float pivotValue = 0.5f; // SUPPRESS CHECKSTYLE
 		float toDegree = 720.0f; // SUPPRESS CHECKSTYLE

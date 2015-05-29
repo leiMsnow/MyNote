@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/pull_to_refresh_header_hint_textview"
-                android:layout_marginTop="@dimen/distance_normal"
+                android:layout_marginTop="8dp"
                 android:text="@string/pull_to_refresh_header_last_time"
                 android:textColor="#999999"
                 android:textSize="12sp" />
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/pull_to_refresh_header_hint_textview"
                 android:layout_marginLeft="2dp"
-                android:layout_marginTop="@dimen/distance_normal"
+                android:layout_marginTop="8dp"
                 android:layout_toRightOf="@id/pull_to_refresh_last_update_time_text"
                 android:minWidth="50dp"
                 android:textColor="#999999"
