@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <string name="app_name">commonapi</string>
     <string name="settings">设置</string>
     <string name="close">关闭</string>
@@ -20,8 +19,6 @@
     <string name="send_shot">发送截屏</string>
     <string name="make_record">拍摄视频</string>
     <string name="video">视频库</string>
-
-
     <string name="pushmsg_center_no_more_msg">没有更多数据了</string>
     <string name="pushmsg_center_pull_up_text">松开加载更多</string>
     <string name="pushmsg_center_pull_down_text">下拉可以刷新</string>
@@ -73,6 +70,8 @@
     <string name="noon">中午 %s</string>
     <string name="afternoon">下午 %s</string>
     <string name="evening">晚上 %s</string>
+    <string name="title_activity_album">AlbumActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
-
