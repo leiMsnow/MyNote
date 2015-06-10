@@ -31,15 +31,19 @@ public class BaseAdapterHelper {
     private View mConvertView;
     private int mLayoutId;
 
-    Object associatedObject;
-
-    public Object getAssociatedObject() {
-        return associatedObject;
+    public int getLayoutId() {
+        return mLayoutId;
     }
 
-    public void setAssociatedObject(Object associatedObject) {
-        this.associatedObject = associatedObject;
-    }
+//    Object associatedObject;
+
+//    public Object getAssociatedObject() {
+//        return associatedObject;
+//    }
+//
+//    public void setAssociatedObject(Object associatedObject) {
+//        this.associatedObject = associatedObject;
+//    }
 
     //受保护的构造不允许new，只可以用get()进入
     protected BaseAdapterHelper(Context context, ViewGroup parent, int layoutId, int position) {
@@ -133,9 +137,9 @@ public class BaseAdapterHelper {
         return this;
     }
 
-    public BaseAdapterHelper setBackgroundColor(int viewId, int color) {
+    public BaseAdapterHelper setBackgroundColor(int viewId, int bgColor) {
         View view = retrieveView(viewId);
-        view.setBackgroundColor(color);
+        view.setBackgroundColor(bgColor);
         return this;
     }
 
@@ -147,7 +151,7 @@ public class BaseAdapterHelper {
 
     public BaseAdapterHelper setTextColor(int viewId, int textColor) {
         TextView view = retrieveView(viewId);
-        view.setTextColor(mContext.getResources().getColor(textColor));
+        view.setTextColor(textColor);
         return this;
     }
 

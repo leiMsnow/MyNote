@@ -15,23 +15,18 @@ import static com.ray.api.adapter.BaseAdapterHelper.get;
  * 所以该类，对于getAdapterHelper直接返回了BaseAdapterHelper。
  * Created by zhangleilei on 15/6/8.
  */
-public abstract class HelperAdapter<T> extends BaseHelperAdapter<T, BaseAdapterHelper> {
+public abstract class QuickAdapter<T> extends BaseQuickAdapter<T, BaseAdapterHelper> {
 
-    public HelperAdapter(Context context, int layoutResId) {
+    public QuickAdapter(Context context, int layoutResId) {
         super(context, layoutResId);
     }
 
-    public HelperAdapter(Context context, int layoutResId, List data) {
+    public QuickAdapter(Context context, int layoutResId, List data) {
         super(context, layoutResId, data);
     }
 
-    public HelperAdapter(Context context, List data, IMultiItemTypeSupport multiItemTypeSupport) {
+    public QuickAdapter(Context context, List data, IMultiItemTypeSupport multiItemTypeSupport) {
         super(context, data, multiItemTypeSupport);
-    }
-
-    @Override
-    protected void convert(BaseAdapterHelper helper, T item) {
-
     }
 
     @Override

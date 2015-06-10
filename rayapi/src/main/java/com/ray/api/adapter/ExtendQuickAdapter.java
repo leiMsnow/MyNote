@@ -11,27 +11,28 @@ import java.util.List;
  * associatedObject即我们的bean。在BaseHelperAdapter可以看到其赋值的代码。
  * Created by zhangleilei on 15/6/8.
  */
-public abstract class ExtendHelperAdapter<T> extends HelperAdapter<T> {
+@Deprecated
+public abstract class ExtendQuickAdapter<T> extends QuickAdapter<T> {
 
 
-    public ExtendHelperAdapter(Context context, int layoutResId) {
+    public ExtendQuickAdapter(Context context, int layoutResId) {
         super(context, layoutResId);
     }
 
-    public ExtendHelperAdapter(Context context, int layoutResId, List data) {
+    public ExtendQuickAdapter(Context context, int layoutResId, List data) {
         super(context, layoutResId, data);
     }
 
-    public ExtendHelperAdapter(Context context, List data, IMultiItemTypeSupport multiItemTypeSupport) {
+    public ExtendQuickAdapter(Context context, List data, IMultiItemTypeSupport multiItemTypeSupport) {
         super(context, data, multiItemTypeSupport);
     }
 
 
     @Override
     protected final void convert(BaseAdapterHelper helper, T item) {
-        boolean itemChanged = helper.associatedObject == null || !helper.associatedObject.equals(item);
-        helper.associatedObject = item;
-        convert(helper, item, itemChanged);
+//        boolean itemChanged = helper.associatedObject == null || !helper.associatedObject.equals(item);
+//        helper.associatedObject = item;
+//        convert(helper, item, itemChanged);
     }
 
     protected abstract void convert(BaseAdapterHelper helper, T item, boolean itemChanged);
