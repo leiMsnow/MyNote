@@ -1,21 +1,20 @@
 package com.ray.bitmap.core;
 
-import java.io.FileDescriptor;
-
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import java.io.FileDescriptor;
 
 /**
  * bitmap编码类
  *
  * @author zhangleilei
- *
  */
 public class BitmapDecoder {
 
-    public static Bitmap decodeSampledBitmapFromResource(Resources res,
-                                                         int resId, int reqWidth, int reqHeight) {
+    public static Bitmap decodeSampleBitmapFromResource(Resources res,
+                                                        int resId, int reqWidth, int reqHeight) {
 
         // 第一次解析将inJustDecodeBounds设置为true，来获取图片大小
         final BitmapFactory.Options options = new BitmapFactory.Options();
@@ -31,6 +30,7 @@ public class BitmapDecoder {
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeResource(res, resId, options);
     }
+
 
     /**
      * 压缩图片至制定大小
@@ -70,6 +70,30 @@ public class BitmapDecoder {
         } catch (OutOfMemoryError e) {
             return null;
         }
+    }
+
+    /**
+     * 根据计算的inSampleSize，得到压缩后图片
+     *
+     * @param pathName
+     * @param reqWidth
+     * @param reqHeight
+     * @return
+     */
+    public static Bitmap decodeSampleBitmapFromFile(String pathName,
+                                                    int reqWidth, int reqHeight) {
+        // 第一次解析将inJustDecodeBounds设置为true，来获取图片大小
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(pathName, options);
+        // 调用上面定义的方法计算inSampleSize值
+        options.inSampleSize = calculateInSampleSize(options, reqWidth,
+                reqHeight);
+        // 使用获取到的inSampleSize值再次解析图片
+        options.inJustDecodeBounds = false;
+        Bitmap bitmap = BitmapFactory.decodeFile(pathName, options);
+
+        return bitmap;
     }
 
     /**

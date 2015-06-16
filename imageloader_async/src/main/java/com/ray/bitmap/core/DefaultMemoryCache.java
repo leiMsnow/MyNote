@@ -1,6 +1,6 @@
 package com.ray.bitmap.core;
 
-import com.ray.utils.Utils;
+import com.ray.utils.FileUtils;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
@@ -19,7 +19,7 @@ public class DefaultMemoryCache implements IMemoryCache {
         mLruCache = new LruCache<String, Bitmap>(size) {
             @Override
             protected int sizeOf(String key, Bitmap value) {
-                return Utils.getBitmapSize(value);
+                return FileUtils.getBitmapSize(value);
             }
         };
     }

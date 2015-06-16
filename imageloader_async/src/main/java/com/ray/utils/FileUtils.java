@@ -1,14 +1,14 @@
 package com.ray.utils;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.os.Environment;
+
 import java.io.File;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.Bitmap;
-import android.os.Environment;
 
 /**
  * 工具类
@@ -16,7 +16,7 @@ import android.os.Environment;
  * @author zhangleilei
  *
  */
-public class Utils {
+public class FileUtils {
 
     /**
      * 获取可以使用的缓存目录; 当SD卡存在或者SD卡不可被移除的时候，就调用getCacheDir()方法来获取缓存路径
@@ -58,23 +58,6 @@ public class Utils {
     }
 
     /**
-     * 获取系统版本号
-     *
-     * @param context
-     * @return
-     */
-    public static int getAppVersion(Context context) {
-        try {
-            PackageInfo info = context.getPackageManager().getPackageInfo(
-                    context.getPackageName(), 0);
-            return info.versionCode;
-        } catch (NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return 1;
-    }
-
-    /**
      * 将key进行MD5加密得到唯一值
      *
      * @param key
@@ -104,6 +87,22 @@ public class Utils {
         return sb.toString();
     }
 
+    /**
+     * 获取系统版本号
+     *
+     * @param context
+     * @return
+     */
+    public static int getAppVersion(Context context) {
+        try {
+            PackageInfo info = context.getPackageManager().getPackageInfo(
+                    context.getPackageName(), 0);
+            return info.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return 1;
+    }
 
 
 

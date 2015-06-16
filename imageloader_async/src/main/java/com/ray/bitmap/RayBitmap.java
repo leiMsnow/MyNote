@@ -1,11 +1,5 @@
 package com.ray.bitmap;
 
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -25,13 +19,18 @@ import com.ray.bitmap.display.DefaultDisplayer;
 import com.ray.bitmap.display.IDisplayer;
 import com.ray.bitmap.download.DefaultDownloader;
 import com.ray.bitmap.download.IDownloader;
-import com.ray.utils.Utils;
+import com.ray.utils.FileUtils;
+
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
 /**
  * 图片加载主体类
  *
  * @author zhangleilei
- *
  */
 public class RayBitmap {
 
@@ -51,7 +50,7 @@ public class RayBitmap {
     private RayBitmap(Context context) {
         mContext = context;
         mBitmapConfig = new RayBitmapConfig(mContext);
-        File cacheDir = Utils.getDiskCacheDir(mContext, "bitmap");
+        File cacheDir = FileUtils.getDiskCacheDir(mContext, "bitmap");
         if (!cacheDir.exists()) {
             cacheDir.mkdirs();
         }
@@ -85,6 +84,7 @@ public class RayBitmap {
     }
 
     // ************************配置bitmap*************************************
+
     /**
      * 配置显示器
      *
@@ -115,8 +115,7 @@ public class RayBitmap {
     /**
      * 设置正在加载的图片
      *
-     * @param resId
-     *            资源id
+     * @param resId 资源id
      */
     public void setLoadingBitmap(int resId) {
         Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(),
@@ -145,13 +144,12 @@ public class RayBitmap {
     }
 
     // ***********************加载图片*****************************************************
+
     /**
      * 显示 图片-使用默认配置
      *
-     * @param view
-     *            显示的view
-     * @param url
-     *            地址/可以是本地路径
+     * @param view 显示的view
+     * @param url  地址/可以是本地路径
      */
     public void display(View view, String url) {
         doDisplay(view, url, null);
@@ -160,13 +158,11 @@ public class RayBitmap {
     /**
      * 显示图片-指定图片大小
      *
-     * @param view 显示的view
-     * @param url 地址
-     *            /可以是本地路径
-     * @param imageWidth
-     *            指定宽度
-     * @param imageHeight
-     *            指定高度
+     * @param view        显示的view
+     * @param url         地址
+     *                    /可以是本地路径
+     * @param imageWidth  指定宽度
+     * @param imageHeight 指定高度
      */
     public void display(View view, String url, int imageWidth, int imageHeight) {
 
@@ -180,8 +176,7 @@ public class RayBitmap {
     /**
      * 设置任务是否关闭
      *
-     * @param exitTasksEarly
-     *            true暂停线程 false 继续线程
+     * @param exitTasksEarly true暂停线程 false 继续线程
      */
     public void setExitTasksEarly(boolean exitTasksEarly) {
         mExitTasksEarly = exitTasksEarly;
@@ -204,8 +199,7 @@ public class RayBitmap {
     /**
      * 暂停正在加载的线程，监听listview或者gridview正在滑动的时候调用
      *
-     * @param pauseWork
-     *            true停止暂停线程，false继续线程
+     * @param pauseWork true停止暂停线程，false继续线程
      */
     public void pauseWork(boolean pauseWork) {
         synchronized (mPauseWorkLock) {
@@ -218,7 +212,6 @@ public class RayBitmap {
 
     /**
      * 退出正在加载的线程，程序退出的时候调用
-     *
      */
     public void onExitTasksEarly() {
         mExitTasksEarly = true;
@@ -249,7 +242,9 @@ public class RayBitmap {
         new CacheOperationTask().execute(CacheOperationTask.CLEAR_MEMORY_CACHE);
     }
 
-    /** 清除缓存线程 */
+    /**
+     * 清除缓存线程
+     */
     private class CacheOperationTask extends AsyncTask<Integer, Void, Void> {
 
         public static final int CLEAR_MEMORY_CACHE = 1;
@@ -274,7 +269,9 @@ public class RayBitmap {
             }
             return null;
         }
-    };
+    }
+
+    ;
 
     // 清除内存缓存
     private void clearMemoryCache() {
@@ -340,7 +337,8 @@ public class RayBitmap {
                             t.setPriority(Thread.NORM_PRIORITY - 1);
                             return t;
                         }
-                    });
+                    }
+            );
             // 初始化bitmap处理类
             mBitmapHandler = new BitmapHandler(mBitmapConfig.downloader,
                     mBitmapCache);
@@ -450,7 +448,6 @@ public class RayBitmap {
      * bitmap下载显示的线程
      *
      * @author zhangleilei
-     *
      */
     public class BitmapWorkerTask extends AsyncTask<String, Void, Bitmap> {
         private String url;
@@ -547,7 +544,6 @@ public class RayBitmap {
      * 基础配置项-内部类
      *
      * @author zhangleilei
-     *
      */
     private class RayBitmapConfig {
         // 缓存路径
@@ -571,7 +567,7 @@ public class RayBitmap {
             DisplayMetrics displayMetrics = context.getResources()
                     .getDisplayMetrics();
             // 设置默认屏幕1/4的大小
-            int pixels = (int) Math.floor(displayMetrics.widthPixels / 4);
+            int pixels = (int) Math.floor(displayMetrics.widthPixels / 8);
             bitmapDisplayConfig.setBitmapHeight(pixels);
             bitmapDisplayConfig.setBitmapWidth(pixels);
         }

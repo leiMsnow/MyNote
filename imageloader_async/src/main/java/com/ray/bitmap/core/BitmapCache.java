@@ -1,18 +1,18 @@
 package com.ray.bitmap.core;
 
-import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
 import android.app.ActivityManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 
 import com.ray.bitmap.core.DiskLruCache.Snapshot;
 import com.ray.bitmap.display.BitmapDisplayConfig;
-import com.ray.utils.Utils;
+import com.ray.utils.FileUtils;
+
+import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * bitmap缓存类
@@ -94,7 +94,7 @@ public class BitmapCache {
             return;
         }
         // 生成图片URL对应的key
-        String newKey = Utils.hashKeyFromSDCard(url);
+        String newKey = FileUtils.hashKeyFromSDCard(url);
         try {
             // 写入SD卡缓存
             DiskLruCache.Editor editor = mDiskLruCache.edit(newKey);
@@ -127,7 +127,7 @@ public class BitmapCache {
         FileDescriptor fileDescriptor = null;
         FileInputStream fileInputStream = null;
         // 生成图片URL对应的key
-        String newKey = Utils.hashKeyFromSDCard(url);
+        String newKey = FileUtils.hashKeyFromSDCard(url);
         try {
             if (mDiskLruCache != null) {
                 snapShot = mDiskLruCache.get(newKey);
@@ -189,7 +189,7 @@ public class BitmapCache {
 
         public BitmapCacheParams(String diskCacheDir, Context context) {
             this.diskCacheDir = new File(diskCacheDir);
-            this.appVersion = Utils.getAppVersion(context);
+            this.appVersion = FileUtils.getAppVersion(context);
 
         }
 
