@@ -9,6 +9,9 @@
             android:name=".activity.AlbumActivity"
             android:label="@string/title_activity_album" >
         </activity>
+        <activity android:name=".activity.PullRefreshListViewActivity" >
+        </activity>
+
     </application>
 
 </manifest>

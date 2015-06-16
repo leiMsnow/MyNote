@@ -1,4 +1,4 @@
-package com.ray.api.adapter;
+package com.ray.api.helper.adapter;
 
 /**
  * 多item支持接口

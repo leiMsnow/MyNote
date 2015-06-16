@@ -1,8 +1,8 @@
-package com.ray.api.adapter;
+package com.ray.api.helper.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
+import android.graphics.ColorFilter;
 import android.os.Build;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -74,6 +74,7 @@ public class BaseAdapterHelper {
      * 由于我们这里并不会为每个Item的布局去编写ViewHolder，该类充当了一个万能的ViewHolder的角色，所以存储convertView子View的引用，
      * 使用了SparseArray<View>，最后将convertView与BaseAdapterHelper通过tag关联。
      * 如果convertView!=null，直接通过tag获取到我们关联的BaseAdapterHelper，更新position后返回。
+     *
      * @param context
      * @param convertView
      * @param parent
@@ -118,6 +119,7 @@ public class BaseAdapterHelper {
     }
 
     //--------------------------提供view便捷的设置值的方法-start---------------------------------------
+
     /**
      * 设置view文本
      *
@@ -134,6 +136,12 @@ public class BaseAdapterHelper {
     public BaseAdapterHelper setImageResource(int viewId, int imageResId) {
         ImageView view = retrieveView(viewId);
         view.setImageResource(imageResId);
+        return this;
+    }
+
+    public BaseAdapterHelper setImageBitmap(int viewId, Bitmap bitmap) {
+        ImageView view = retrieveView(viewId);
+        view.setImageBitmap(bitmap);
         return this;
     }
 
@@ -159,23 +167,30 @@ public class BaseAdapterHelper {
      * 图片展示
      *
      * @param viewId
-     * @param obj
+     * @param url
      * @return
      */
-    public BaseAdapterHelper setImageBitmap(int viewId, Object obj) {
-
+    public BaseAdapterHelper setImageBitmapForUrl(int viewId, String url) {
         ImageView view = retrieveView(viewId);
+        RayBitmap.openBitmap(mContext).display(view, url);
+        return this;
+    }
 
-        if (obj instanceof String) {
-            RayBitmap.openBitmap(mContext).display(view, String.valueOf(obj));
-        } else if (obj instanceof Integer) {
-            view.setImageResource((Integer) obj);
-        } else if (obj instanceof Bitmap) {
-            view.setImageBitmap((Bitmap) obj);
-        } else if (obj instanceof Drawable) {
-            view.setImageDrawable((Drawable) obj);
-        }
+//    public BaseAdapterHelper setImageBitmapForSDCard(int viewId, String url) {
+//        ImageView view = retrieveView(viewId);
+//        LocalImageLoader.getInstance().loadImage(url,view);
+//        return this;
+//    }
 
+    public BaseAdapterHelper setColorFilter(int viewId,ColorFilter colorFilter){
+        ImageView view = retrieveView(viewId);
+        view.setColorFilter(colorFilter);
+        return this;
+    }
+
+    public BaseAdapterHelper setColorFilter(int viewId,int colorFilter){
+        ImageView view = retrieveView(viewId);
+        view.setColorFilter(colorFilter);
         return this;
     }
 

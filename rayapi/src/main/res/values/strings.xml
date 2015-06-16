@@ -43,6 +43,9 @@
     <string name="pull_to_refresh_network_error">网络不给力，请检查网络</string>
 
     <!-- 图片保存的文字 -->
+    <string name="no_sdcard">SD卡不可用</string>
+    <string name="photo_empty">一张照片都没有</string>
+
     <string name="picture_save_succeed">图片已保存到相册</string>
     <string name="picture_save_fail">保存图片失败</string>
     <string name="picture_next_album">下一组：</string>

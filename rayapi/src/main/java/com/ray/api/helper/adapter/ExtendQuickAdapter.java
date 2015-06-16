@@ -1,4 +1,4 @@
-package com.ray.api.adapter;
+package com.ray.api.helper.adapter;
 
 import android.content.Context;
 
@@ -14,10 +14,6 @@ import java.util.List;
 @Deprecated
 public abstract class ExtendQuickAdapter<T> extends QuickAdapter<T> {
 
-
-    public ExtendQuickAdapter(Context context, int layoutResId) {
-        super(context, layoutResId);
-    }
 
     public ExtendQuickAdapter(Context context, int layoutResId, List data) {
         super(context, layoutResId, data);

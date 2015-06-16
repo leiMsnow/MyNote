@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.ray.api.fragment.BaseFragment;
 import com.ray.api.handler.ActivityManager;
+import com.ray.api.view.BaseProgressDialog;
 
 /**
  * 基础activity
@@ -18,6 +19,7 @@ public abstract class BaseActivity extends Activity {
     protected FragmentManager mFragmentManager;
     protected BaseFragment mBaseFragment;
     protected ActivityManager mManager;
+    protected BaseProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

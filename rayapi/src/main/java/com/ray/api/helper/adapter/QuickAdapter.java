@@ -1,4 +1,4 @@
-package com.ray.api.adapter;
+package com.ray.api.helper.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import static com.ray.api.adapter.BaseAdapterHelper.get;
+import static com.ray.api.helper.adapter.BaseAdapterHelper.get;
 
 /**
  * 继承自 BaseHelperAdapter
@@ -16,10 +16,6 @@ import static com.ray.api.adapter.BaseAdapterHelper.get;
  * Created by zhangleilei on 15/6/8.
  */
 public abstract class QuickAdapter<T> extends BaseQuickAdapter<T, BaseAdapterHelper> {
-
-    public QuickAdapter(Context context, int layoutResId) {
-        super(context, layoutResId);
-    }
 
     public QuickAdapter(Context context, int layoutResId, List data) {
         super(context, layoutResId, data);

@@ -1,4 +1,4 @@
-package com.ray.api.adapter;
+package com.ray.api.helper.adapter;
 
 import android.content.Context;
 import android.view.View;
