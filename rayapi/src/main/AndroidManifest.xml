@@ -11,7 +11,10 @@
         </activity>
         <activity android:name=".activity.PullRefreshListViewActivity" >
         </activity>
-
+        <activity
+            android:name=".activity.PictureDisplayActivity"
+            android:label="@string/title_activity_picture_display" >
+        </activity>
     </application>
 
 </manifest>

@@ -45,7 +45,6 @@
     <!-- 图片保存的文字 -->
     <string name="no_sdcard">SD卡不可用</string>
     <string name="photo_empty">一张照片都没有</string>
-
     <string name="picture_save_succeed">图片已保存到相册</string>
     <string name="picture_save_fail">保存图片失败</string>
     <string name="picture_next_album">下一组：</string>
@@ -73,8 +72,9 @@
     <string name="noon">中午 %s</string>
     <string name="afternoon">下午 %s</string>
     <string name="evening">晚上 %s</string>
-    <string name="title_activity_album">AlbumActivity</string>
+    <string name="title_activity_album">图片选择</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_picture_display">图片预览</string>
 
 </resources>

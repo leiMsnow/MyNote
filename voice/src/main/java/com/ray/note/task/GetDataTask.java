@@ -1,12 +1,16 @@
 package com.ray.note.task;
 
+import com.ray.api.activity.AlbumActivity;
+import com.ray.api.activity.PictureDisplayActivity;
 import com.ray.bitmap.core.AsyncTask;
+import com.ray.note.activity.ImageViewActivity;
+import com.ray.note.activity.MainActivity;
 
 public class GetDataTask extends AsyncTask<Void, Void, String[]> {
 
 
-    public interface IPostExcuteListener{
-       void onPostExcuted(boolean isSuccess);
+    public interface IPostExcuteListener {
+        void onPostExcuted(boolean isSuccess);
     }
 
     private IPostExcuteListener postExcuteListener;
@@ -29,12 +33,16 @@ public class GetDataTask extends AsyncTask<Void, Void, String[]> {
     protected void onPostExecute(String[] result) {
         super.onPostExecute(result);
 
-        if (postExcuteListener!=null){
+        if (postExcuteListener != null) {
             postExcuteListener.onPostExcuted(true);
         }
     }
 
     public static final String[] mStrings = {
+            AlbumActivity.class.getName().toString(),
+            MainActivity.class.getName().toString(),
+            ImageViewActivity.class.getName().toString(),
+            PictureDisplayActivity.class.getName().toString(),
             "Abbaye de Belloc", "Abbaye du Mont des Cats", "Abertam", "Abondance",
             "Ackawi",
             "Acorn", "Adelost", "Affidelice au Chablis", "Afuega'l Pitu", "Airag",

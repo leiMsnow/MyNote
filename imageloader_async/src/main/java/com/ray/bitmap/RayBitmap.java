@@ -566,7 +566,7 @@ public class RayBitmap {
 
             DisplayMetrics displayMetrics = context.getResources()
                     .getDisplayMetrics();
-            // 设置默认屏幕1/4的大小
+            // 设置默认屏幕1/8的大小
             int pixels = (int) Math.floor(displayMetrics.widthPixels / 8);
             bitmapDisplayConfig.setBitmapHeight(pixels);
             bitmapDisplayConfig.setBitmapWidth(pixels);

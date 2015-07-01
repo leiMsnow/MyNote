@@ -1,6 +1,7 @@
 package com.ray.api.activity;
 
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import com.ray.api.R;
 import com.ray.api.adapter.AlbumAdapter;
 import com.ray.api.model.PhotoData;
 import com.ray.api.model.PhotoFolder;
+import com.ray.api.model.PhotoSelectData;
+import com.ray.api.utils.Constants;
 import com.ray.api.utils.SDCardUtils;
 import com.ray.api.utils.ScreenUtils;
 import com.ray.api.utils.ToastUtil;
@@ -39,6 +42,7 @@ import java.util.List;
 public class AlbumActivity extends BaseActivity implements View.OnClickListener, PopupWindowListView.IPhotoDirSelectListener, AlbumAdapter.IPhotoSelectListener {
 
 
+    public final static int SELECT_IMAGES_CODE = 100;
     private GridView mGVPhotos;
     private View mBottomView;
     private TextView mTVDirName;
@@ -58,9 +62,10 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
 
     private AlbumAdapter mAdapter;
     //被选中的图片集合
-    private List<String> mSelectedImages;
+    private PhotoSelectData mSelectedImages;
     //图片最大选中数量
-    private final int mMaxSelectCount = 5;
+    private final int MAX_SELECT_COUNT = 5;
+    private int currentSelectCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -185,7 +190,7 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
             mProgressDialog.dismiss();
             mAdapter = new AlbumAdapter(mContext, R.layout.item_gridview_album, mPhotoDatas);
             mGVPhotos.setAdapter(mAdapter);
-            mSelectedImages = new ArrayList<String>();
+            mSelectedImages = new PhotoSelectData();
             //绑定数据
             dataBindView();
             initDirPopupWindow();
@@ -214,12 +219,12 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
             photo.setUri(imgs.get(i));
             mPhotoDatas.add(photo);
         }
-        mAdapter.setSelectPhotoListener(this);
+        mAdapter.setPhotoSelectListener(this);
         mAdapter.setDirPath(mPicDir.getAbsolutePath());
         mAdapter.replaceAll(mPhotoDatas);
         mTVDirName.setVisibility(View.VISIBLE);
         mTVDirName.setText(mPicDir.getName());
-
+        mPicDir = null;
     }
 
     @Override
@@ -232,9 +237,45 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
             lp.alpha = 0.3f;
             getWindow().setAttributes(lp);
         } else if (view == mTVDisplay) {
-            ToastUtil.getInstance(mContext).showToast("hhh");
+            openPictureDisplay();
         }
 
+    }
+
+    private void openPictureDisplay() {
+        mSelectedImages.getSelectData().clear();
+        for (int i = 0; i < mAdapter.getCount(); i++) {
+            if (mAdapter.getItem(i).isSelect()) {
+                mSelectedImages.getSelectData().add(mAdapter.getItem(i));
+//                mAdapter.getItem(i).setSelect(false);
+            }
+        }
+        mSelectedImages.setDir(mAdapter.getDirPath());
+        Intent intent = new Intent(mContext, PictureDisplayActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Constants.PICTURE_DISPLAY_IMAGES, mSelectedImages);
+        bundle.putBoolean(Constants.PICTURE_READ_ONLY, false);
+        intent.putExtras(bundle);
+        startActivityForResult(intent, SELECT_IMAGES_CODE);
+    }
+
+    private void updatePictureDisplay() {
+        for (int i = 0; i < mSelectedImages.getSelectData().size(); i++) {
+            mAdapter.getItem(mSelectedImages.getSelectData().get(i).getIndex()).setSelect(true);
+        }
+        mAdapter.notifyDataSetChanged();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+        if (requestCode == SELECT_IMAGES_CODE) {
+            mSelectedImages = (PhotoSelectData) data.getSerializableExtra(Constants.PICTURE_DISPLAY_IMAGES);
+            updatePictureDisplay();
+        }
     }
 
     @Override
@@ -246,16 +287,34 @@ public class AlbumActivity extends BaseActivity implements View.OnClickListener,
     }
 
     @Override
-    public void onPhotoSelected(PhotoData photoData) {
-        mAdapter.getItem(photoData.getIndex()).setSelect(!photoData.isSelect());
-        mAdapter.notifyDataSetChanged();
-        for (int i = 0; i < mAdapter.getCount(); i++) {
-            if (mAdapter.getItem(i).isSelect()) {
-                mTVDisplay.setEnabled(true);
-                break;
-            } else {
-                mTVDisplay.setEnabled(false);
-            }
+    public void onPhotoSelected(PhotoData photoData, boolean isDisplay) {
+
+        if ((!photoData.isSelect()) && (currentSelectCount == MAX_SELECT_COUNT)) {
+            ToastUtil.getInstance(mContext).showToast("最大可选" + MAX_SELECT_COUNT + "张");
+            return;
         }
+        if (isDisplay) {
+            if ((!photoData.isSelect()) && currentSelectCount < 5)
+                currentSelectCount += 1;
+            mAdapter.getItem(photoData.getIndex()).setSelect(true);
+            mTVDisplay.setEnabled(true);
+            openPictureDisplay();
+        } else {
+
+            mAdapter.getItem(photoData.getIndex()).setSelect(!photoData.isSelect());
+            if (photoData.isSelect()) {
+                if (currentSelectCount < 5)
+                    currentSelectCount += 1;
+            } else {
+                if (currentSelectCount > 0)
+                    currentSelectCount -= 1;
+            }
+            mTVDisplay.setEnabled(false);
+            if (currentSelectCount > 0) {
+                mTVDisplay.setEnabled(true);
+            }
+
+        }
+        mAdapter.notifyDataSetChanged();
     }
 }

@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class AlbumAdapter extends QuickAdapter<PhotoData> {
 
+
     //文件夹路径
     private String mDirPath;
 
@@ -23,10 +24,21 @@ public class AlbumAdapter extends QuickAdapter<PhotoData> {
         this.mDirPath = mDirPath;
     }
 
-    private IPhotoSelectListener selectPhotoListener;
+    public String getDirPath() {
+        return mDirPath;
+    }
 
-    public void setSelectPhotoListener(IPhotoSelectListener selectPhotoListener) {
-        this.selectPhotoListener = selectPhotoListener;
+    private IPhotoSelectListener photoSelectListener;
+
+//    private IPhotoClickListener photoClickListener;
+//
+//    public void setPhotoClickListener(IPhotoClickListener photoClickListener) {
+//        this.photoClickListener = photoClickListener;
+//    }
+
+
+    public void setPhotoSelectListener(IPhotoSelectListener photoSelectListener) {
+        this.photoSelectListener = photoSelectListener;
     }
 
 
@@ -42,9 +54,19 @@ public class AlbumAdapter extends QuickAdapter<PhotoData> {
         helper.setOnClickListener(R.id.iv_btn_select, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (selectPhotoListener != null) {
-                    selectPhotoListener.onPhotoSelected(item);
+                if (photoSelectListener != null) {
+                    photoSelectListener.onPhotoSelected(item, false);
                 }
+            }
+        });
+        helper.setOnClickListener(R.id.iv_photo, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (photoSelectListener != null) {
+                    photoSelectListener.onPhotoSelected(item, true);
+                }
+//                if (photoClickListener != null)
+//                    photoClickListener.onPhotoClick(item);
             }
         });
         helper.setTag(R.id.iv_btn_select, item.getIndex());
@@ -59,6 +81,10 @@ public class AlbumAdapter extends QuickAdapter<PhotoData> {
 
 
     public interface IPhotoSelectListener {
-        void onPhotoSelected(PhotoData photoData);
+        void onPhotoSelected(PhotoData photoData, boolean isDisplay);
     }
+
+//    public interface IPhotoClickListener {
+//        void onPhotoClick(PhotoData photoData);
+//    }
 }

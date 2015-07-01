@@ -5,20 +5,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
-import com.ray.api.activity.AlbumActivity;
 import com.ray.api.activity.BaseActivity;
-import com.ray.api.helper.adapter.IMultiItemTypeSupport;
 import com.ray.api.view.pullrefresh.ui.PullToRefreshBase;
 import com.ray.api.view.pullrefresh.ui.PullToRefreshListView;
 import com.ray.note.R;
-import com.ray.note.adapter.ExtendHelperListViewAdapter;
+import com.ray.note.adapter.HelperListViewAdapter;
 import com.ray.note.task.GetDataTask;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 
 
-public class HelperListViewActivity extends BaseActivity implements IMultiItemTypeSupport,
+public class HelperListViewActivity extends BaseActivity implements
         PullToRefreshBase.OnRefreshListener, View.OnClickListener
         , GetDataTask.IPostExcuteListener {
 
@@ -26,9 +24,7 @@ public class HelperListViewActivity extends BaseActivity implements IMultiItemTy
     private PullToRefreshListView mPullListView;
 
 
-//    private HelperListViewAdapter mAdapter;
-    private ExtendHelperListViewAdapter mAdapter;
-
+    private HelperListViewAdapter mAdapter;
 
     private LinkedList<String> mListItems;
     private boolean mIsStart = true;
@@ -60,11 +56,7 @@ public class HelperListViewActivity extends BaseActivity implements IMultiItemTy
 
         mListView = mPullListView.getRefreshableView();
 
-//        mAdapter = new HelperListViewAdapter(this,
-//                android.R.layout.simple_list_item_1, mListItems);
-//        mListView.setAdapter(mAdapter);
-//        mAdapter.setOnClickListener(this);
-        mAdapter = new ExtendHelperListViewAdapter(this, mListItems, this);
+        mAdapter = new HelperListViewAdapter(this,R.layout.item_list_simple, mListItems);
         mListView.setAdapter(mAdapter);
 
     }
@@ -74,26 +66,26 @@ public class HelperListViewActivity extends BaseActivity implements IMultiItemTy
         mAdapter.setOnClickListener(this);
     }
 
-    @Override
-    public int getLayoutId(int position, Object o) {
-        if (o.toString().contains("A")) {
-            return android.R.layout.simple_expandable_list_item_2;
-        }
-        return android.R.layout.simple_expandable_list_item_1;
-    }
-
-    @Override
-    public int getViewTypeCount() {
-        return 2;
-    }
-
-    @Override
-    public int getItemViewType(int position, Object o) {
-        if (o.toString().contains("A")) {
-            return 0;
-        }
-        return 1;
-    }
+//    @Override
+//    public int getLayoutId(int position, Object o) {
+//        if (o.toString().contains("A")) {
+//            return android.R.layout.simple_expandable_list_item_2;
+//        }
+//        return android.R.layout.simple_expandable_list_item_1;
+//    }
+//
+//    @Override
+//    public int getViewTypeCount() {
+//        return 2;
+//    }
+//
+//    @Override
+//    public int getItemViewType(int position, Object o) {
+//        if (o.toString().contains("A")) {
+//            return 0;
+//        }
+//        return 1;
+//    }
 
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
@@ -114,9 +106,11 @@ public class HelperListViewActivity extends BaseActivity implements IMultiItemTy
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case android.R.id.text1:
-//                ToastUtil.getInstance(this).showToast(v.getTag().toString());
-                startActivity(new Intent(mContext, AlbumActivity.class));
+            case R.id.text1:
+                String className = v.getTag().toString();
+                Intent intent = new Intent();
+                intent.setClassName(mContext, className);
+                startActivity(intent);
                 break;
         }
     }

@@ -5,11 +5,11 @@ import android.view.View;
 
 import com.ray.api.helper.adapter.BaseAdapterHelper;
 import com.ray.api.helper.adapter.QuickAdapter;
+import com.ray.note.R;
 
 import java.util.List;
 
 /**
- *
  * Created by dangdang on 15/6/9.
  */
 public class HelperListViewAdapter extends QuickAdapter<String> {
@@ -27,7 +27,8 @@ public class HelperListViewAdapter extends QuickAdapter<String> {
 
     @Override
     protected void convert(BaseAdapterHelper helper, String item) {
-        helper.setText(android.R.id.text1,item);
-        helper.setOnClickListener(android.R.id.text1,onClickListener);
+        helper.setText(R.id.text1, item);
+        helper.setTag(R.id.text1, item);
+        helper.setOnClickListener(R.id.text1, onClickListener);
     }
 }
